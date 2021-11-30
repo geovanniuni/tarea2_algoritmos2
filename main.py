@@ -21,6 +21,44 @@ except Exception as e:
     raise
 
 
+
+def obtener_productos():
+    #alumnosx = []
+    with connection.cursor() as cursor:
+        try:
+            cursor.execute("SELECT * FROM Producto")
+            productox = cursor.fetchall()
+            return productox
+        except Exception as e:
+            raise
+    #return alumnosx
+
+
+def obtener_clientes():
+    #alumnosx = []
+    with connection.cursor() as cursor:
+        try:
+            cursor.execute("SELECT * FROM cliente")
+            clientex = cursor.fetchall()
+            return clientex
+        except Exception as e:
+            raise
+    #return alumnosx
+
+def insertar_cliente(idcliente, direccion, telefono,email,nombres,apellidoP, apellidoM):
+    with connection.cursor() as cursor:
+        try:
+            cursor.execute("INSERT INTO cliente(idcliente, direccion, telefono,email,nombres,apellidoP, apellidoM) VALUES (%s, %s, %s, %s, %s, %s, %s)",(idcliente, direccion, telefono,email,nombres,apellidoP, apellidoM))
+            connection.commit()
+        except Exception as e:
+            raise
+    
+print("Hello World")
+
+
+app = Flask(__name__)
+
+
 #sql='INSERT INTO alumno(nombre,nota,edad) VALUES (%s,%s,%s)'
 #try:
 #    cursor.execute(sql,("pedro",14,18))
