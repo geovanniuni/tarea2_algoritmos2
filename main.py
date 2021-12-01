@@ -12,7 +12,7 @@ connection=pymysql.connect(
 
 cursor=connection.cursor()
 
-sql='SELECT * FROM Producto'
+sql='SELECT * FROM producto_'
 try:
     cursor.execute(sql)
     data=cursor.fetchall() # mas de uno
@@ -20,7 +20,7 @@ try:
 except Exception as e:
     raise
 
-sql='SELECT * FROM cliente'
+sql='SELECT * FROM cliente_'
 try:
     cursor.execute(sql)
     data=cursor.fetchall() # mas de uno
@@ -32,7 +32,7 @@ def obtener_productos():
     #alumnosx = []
     with connection.cursor() as cursor:
         try:
-            cursor.execute("SELECT * FROM Producto")
+            cursor.execute("SELECT * FROM producto_")
             productox = cursor.fetchall()
             return productox
         except Exception as e:
@@ -44,7 +44,7 @@ def obtener_clientes():
     #alumnosx = []
     with connection.cursor() as cursor:
         try:
-            cursor.execute("SELECT * FROM cliente")
+            cursor.execute("SELECT * FROM cliente_")
             clientex = cursor.fetchall()
             return clientex
         except Exception as e:
@@ -54,7 +54,7 @@ def obtener_clientes():
 def insertar_cliente(idcliente, direccion, telefono,email,nombres,apellidoP, apellidoM):
     with connection.cursor() as cursor:
         try:
-            cursor.execute("INSERT INTO cliente(idcliente, direccion, telefono,email,nombres,apellidoP, apellidoM) VALUES (%s, %s, %s, %s, %s, %s, %s)",(idcliente, direccion, telefono,email,nombres,apellidoP, apellidoM))
+            cursor.execute("INSERT INTO cliente_(idcliente, direccion, telefono,email,nombres,apellidoP, apellidoM) VALUES (%s, %s, %s, %s, %s, %s, %s)",(idcliente, direccion, telefono,email,nombres,apellidoP, apellidoM))
             connection.commit()
         except Exception as e:
             raise
@@ -72,7 +72,8 @@ def index():
 
 @app.route("/tienda")
 def formulario_agregar_producto():
-    return render_template("tienda.html")
+    producto=obtener_productos()
+    return render_template("tienda.html",producto=producto)
 
 # @app.route("/etadisticas")
 # def formulario_agregar_alumno():
