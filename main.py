@@ -20,7 +20,13 @@ try:
 except Exception as e:
     raise
 
-
+sql='SELECT * FROM cliente'
+try:
+    cursor.execute(sql)
+    data=cursor.fetchall() # mas de uno
+    print(data)
+except Exception as e:
+    raise
 
 def obtener_productos():
     #alumnosx = []
