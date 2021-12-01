@@ -65,51 +65,30 @@ print("Hello World")
 app = Flask(__name__)
 
 
-#sql='INSERT INTO alumno(nombre,nota,edad) VALUES (%s,%s,%s)'
-#try:
-#    cursor.execute(sql,("pedro",14,18))
-#    connection.commit() # para confirmar en nuestra tabla
-#            # o sino no se vera en la tabla solo en la consola
-#except Exception as e:
-#    raise
+@app.route('/')
+def index():
+   #return "Hello World"
+   return render_template("index.html")
 
+@app.route("/tienda")
+def formulario_agregar_producto():
+    return render_template("tienda.html")
 
-# def obtener_alumnos():
-#     #alumnosx = []
-#     with connection.cursor() as cursor:
-#         try:
-#             cursor.execute("SELECT * FROM alumno")
-#             alumnosx = cursor.fetchall()
-#             return alumnosx
-#         except Exception as e:
-#             raise
-#     #return alumnosx
-
-# def insertar_alumno(nombre, nota, edad):
-#     with connection.cursor() as cursor:
-#         try:
-#             cursor.execute("INSERT INTO alumno(nombre, nota, edad) VALUES (%s, %s, %s)",(nombre, nota, edad))
-#             connection.commit()
-#         except Exception as e:
-#             raise
-    
-# print("Hello World")
-
-
-# app = Flask(__name__)
-
-
-# @app.route('/')
-# def index():
-#    #return "Hello World"
-#    return render_template('indice.html')
-
-# @app.route("/agregar_alumno")
+# @app.route("/etadisticas")
 # def formulario_agregar_alumno():
-#     return render_template("agregar_alumno.html")
+#     return render_template("estadisticas.html")
+
+# @app.route("/mispedidos")
+# def formulario_agregar_alumno():
+#     return render_template("mispedidos.html")
+
+# @app.route("/registro")
+# def formulario_agregar_alumno():
+#     return render_template("registro.html")
+
 
 # #@app.route("/")
-# @app.route("/alumnos")
+# @app.route("/estadisticas")
 # def alumnos():
 #     alumno = obtener_alumnos()
 #     #return render_template("alumnos.html")
@@ -126,5 +105,5 @@ app = Flask(__name__)
 #     return redirect("/alumnos")
 
 
-# if __name__=="__main__":
-#     app.run(host='0.0.0.0', port=8000, debug=True)
+if __name__=="__main__":
+    app.run(host='0.0.0.0', port=8000, debug=True)
