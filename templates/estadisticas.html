@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -40,23 +41,14 @@
         </tr>
       </thead>
       <tbody>
+       {% for productox in producto %}
         <tr>
-          <th scope="row">1</th>
-          <td>4</td>
-          <td>$56000</td>
-          <td>17/10/2021</td>
+          <th scope="row">{{productox[0]}}</th>
+          <td>{{productox[1]}}</td>
+          <td>{{productox[2]}}</td>
+          <td>{{productox[3]}}</td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>3</td>
-          <td>$23000</td>
-          <td>12/10/2021</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>5</td>
-          <td>$47000</td>
-          <td>08/10/202</td>
+         {% endfor %}
         </tr>
       </tbody>
     </table>

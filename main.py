@@ -59,7 +59,7 @@ def insertar_cliente(idcliente, direccion, telefono,email,nombres,apellidoP, ape
         except Exception as e:
             raise
     
-print("Hello World")
+print(obtener_productos())
 
 
 app = Flask(__name__)
@@ -74,9 +74,10 @@ def index():
 def formulario_agregar_producto():
     return render_template("tienda.html")
 
-# @app.route("/etadisticas")
-# def formulario_agregar_alumno():
-#     return render_template("estadisticas.html")
+@app.route("/estadisticas")
+def resumen_estadisticas():
+    producto = obtener_productos()
+    return render_template("estadisticas.html",producto=producto )
 
 # @app.route("/mispedidos")
 # def formulario_agregar_alumno():
@@ -103,6 +104,14 @@ def formulario_agregar_producto():
 #     insertar_alumno(nombre, nota, edad)
 #     # De cualquier modo, y si todo fue bien, redireccionar
 #     return redirect("/alumnos")
+
+
+
+
+
+
+
+
 
 
 if __name__=="__main__":
