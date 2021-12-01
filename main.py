@@ -12,8 +12,7 @@ connection=pymysql.connect(
 
 cursor=connection.cursor()
 
-<<<<<<< HEAD
-=======
+
 sql='SELECT * FROM Producto'
 try:
     cursor.execute(sql)
@@ -22,7 +21,7 @@ try:
 except Exception as e:
     raise
 
->>>>>>> main
+
 sql='SELECT * FROM cliente'
 try:
     cursor.execute(sql)
@@ -31,11 +30,7 @@ try:
 except Exception as e:
     raise
 
-<<<<<<< HEAD
 
-
-
-=======
 def obtener_productos():
     #alumnosx = []
     with connection.cursor() as cursor:
@@ -71,6 +66,14 @@ print("Hello World")
 
 
 app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+   #return "Hello World"
+   return render_template('templates/index.html')
+
+
 
 
 #sql='INSERT INTO alumno(nombre,nota,edad) VALUES (%s,%s,%s)'
@@ -134,6 +137,6 @@ app = Flask(__name__)
 #     return redirect("/alumnos")
 
 
-# if __name__=="__main__":
-#     app.run(host='0.0.0.0', port=8000, debug=True)
->>>>>>> main
+ if __name__=="__main__":
+     app.run(host='0.0.0.0', port=8000, debug=True)
+
